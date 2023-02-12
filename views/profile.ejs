@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head") %>
+    <link rel="stylesheet" href="/css/signup_login.css">
+    <title>Login | Join the fun</title>
+  </head>
+  <body>
+    <div class="profile_container">
+      <h1>USERNAME: <%=userDetails.username %></h1>
+      <h1>MAIL ID: <%=userDetails.email %></h1>
+      <% userPosts.map((post)=>{ %>
+      <p class="pt"><%= post.title %></p>
+      <p class="pm"><%= post.post_msg %></p>
+      <button class="post_delete" id="<%= post._id %>" onclick="handlePostDelete(this)">
+        Delete
+      </button>&nbsp;
+      <button class="post_edit" id="<%= post._id %>"><a href="/user/edit?id=<%= post._id %>">Edit</a> </button>
+
+     
+      <hr />
+      <% }) %>
+    </div>
+  </body>
+  <script>
+    const handlePostDelete = (btn) => {
+      const id = btn.getAttribute("id");
+      const uri = `http://localhost:3000/user/profile/post?id=${id}`;
+
+      const option = {
+        method: "DELETE",
+      };
+
+     fetch(uri, option).then((result) => {
+        console.log(result)
+        document.location.reload();
+      }).catch((err)=>{
+        console.log(err)
+      })
+    };
+  </script>
+</html>

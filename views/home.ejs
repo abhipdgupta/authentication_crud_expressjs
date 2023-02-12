@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Home | welcome</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-items: center;
-      }
-    </style>
+    <%- include("./partials/head") %>
+    <link rel="stylesheet" href="/css/home.css" />
+    <title>Home</title>
   </head>
   <body>
-    <span>hi</span>
+    <div class="details">
+      <div class="user_info">
+        <span>username :<%= userDetails.username %></span>
+        <span>email :<%= userDetails.email %></span>
+      </div>
+
+      <div class="options">
+        <a href="/logout">Logout</a>
+        <a href="/user/createpost">Create Post</a>
+        <a href="/user/profile">My Profile</a>
+      </div>
+    </div>
   </body>
 </html>

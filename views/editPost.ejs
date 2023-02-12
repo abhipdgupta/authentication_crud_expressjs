@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head") %>
+    <link rel="stylesheet" href="/css/signup_login.css">
+    <title>Create Post | MsgShare</title>
+  </head>
+
+  <body>
+    <form class="formLS" action="/user/edit" method="post">
+      <Label>Edit Post</Label>
+      <label for="title">Title</label>
+      <input
+        type="text"
+        name="title"
+        id="title"
+        value="<%= post.title %>"
+        required
+      />
+     <input type="hidden" name="post_id" id="post_id" value="<%= post._id %>">
+      <label for="post_msg">Content</label>
+      <textarea name="post_msg" id="post_msg" required>
+<%= post.post_msg %></textarea
+      >
+      <button type="submit">Save</button>
+    </form>
+  </body>
+</html>

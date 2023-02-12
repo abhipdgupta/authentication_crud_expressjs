@@ -1,53 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <head>
+    <%- include('./partials/head') %>
+    <link rel="stylesheet" href="/css/signup_login.css">
     <title>Sign Up | Join the fun</title>
-    <style>
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-size: 1.5rem;
-        }
-        body {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-items: center;
-        }
+  </head>
+  <body>
+    
+    <form class="formLS" action="/signup" method="post">
+      <Label>SIGNUP</Label>
+      <label for="username">Name : </label>
+      <input type="text" name="username" id="username" required />
 
-        form{
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-items: center;
-          gap: 1rem;
-        }
-    </style>
-</head>
-<body>
-    <h1>
-        <Label>SIGNUP</Label>
-    </h1>
-    <form action="/user/signup" method="post">
-        <label for="username">Name : </label>
-        <input type="text" name="username" id="username" required>
-           
-        <label for="email">Mail Id : </label>
-        <input type="email" name="email" id="email" required>
-        
-        <label for="password">Password : </label>
-        <input type="password" name="password" id="password" required>
+      <label for="email">Mail Id : </label>
+      <input type="email" name="email" id="email" required />
 
-        <button type="submit">Submit</button>
-        
+      <label for="password">Password : </label>
+      <input type="password" name="password" id="password" required />
 
+      <button type="submit">Submit</button>
+      <p>Already a user? <a href="/login">Login</a></p>
 
-
+      <% if (tryingToSignup) { %>
+        <% if (signupSuccess) { %>
+        <p>Hurray! You are Signup<a href="/login">Login</a></p>
+        <% }else { %>
+        <p>Email is already register</p>
+        <p>Try <a href="/login">Login</a></p>
+        <% }} %>
     </form>
-</body>
+    
+  </body>
 </html>

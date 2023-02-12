@@ -1,18 +1,47 @@
-const User = require('../model/userSchema');
+const { setUser } = require("../userInfo");
+const User = require("../model/userSchema");
 
-const handleUserSignup=async (req,res)=>{
+const handleUserSignup = async (req, res) => {
+  
+  const userExist=await User.find({ email: req.body.email})
+  
+  if(userExist.length===0){
+   
+  
+    await User.create({
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+     
+    });
+ 
+    return res.redirect("/login")
+  }
+  else{
+    return res.render("signup",{signupSuccess:false,tryingToSignup:true})
+  }
 
-    console.log(req.body)
-    const result =await User.create({
-        username:req.body.username,
-        email: req.body.email,
-        password: req.body.password,
-    })    
+  
+};
+const handleUserLogin = async (req, res) => {
+  // console.log(req.body);
+  const user = await User.findOne({
+    email: req.body.email,
+    password: req.body.password,
+  });
 
-    res.send(result)
-}
+  if(!user){
+    return res.render("login",{authenticated:false})
+  }
 
+  const token= setUser(user)
+  res.cookie("sessionID",token,{maxAge:900*1000,httpOnly: true })
 
-module.exports={
-    handleUserSignup,
-}
+  return res.redirect("/")
+};
+
+module.exports = {
+  handleUserSignup, 
+  handleUserLogin,
+  
+};
