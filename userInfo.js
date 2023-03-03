@@ -15,7 +15,7 @@ function getUser(token) {
   return jwt.verify(token, secret);
 }
 
-module.exports = {
+module.exports =  {
   setUser,
   getUser,
 };
