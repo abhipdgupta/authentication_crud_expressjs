@@ -2,21 +2,21 @@
 <html lang="en">
   <head>
     <%- include("./partials/head") %>
-    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/navbar.css" />
     <title>Home</title>
   </head>
   <body>
-    <div class="details">
-      <div class="user_info">
-        <span>username :<%= userDetails.username %></span>
-        <span>email :<%= userDetails.email %></span>
-      </div>
+    <%- include("./partials/navbar") %>
+    <div class="all_posts">
+      <h1>ALL POSTS</h1>
+      <hr>
+      <% allPosts.map((post)=>{ %>
+      <h1 class="pt"><%= post.title %></h1>
+      <p class="pm"><%= post.post_msg %></p>
 
-      <div class="options">
-        <a href="/logout">Logout</a>
-        <a href="/user/createpost">Create Post</a>
-        <a href="/user/profile">My Profile</a>
-      </div>
+      <hr />
+      <br>
+      <% }) %>
     </div>
   </body>
 </html>

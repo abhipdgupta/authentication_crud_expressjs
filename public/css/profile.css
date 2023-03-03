@@ -1,0 +1,13 @@
+ .post_delete , .post_edit {
+
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: white;
+    margin-top: 1rem;  
+    padding: 5px;
+    border-radius: 10px;
+    background-color: black;
+    cursor: pointer;
+}

@@ -40,3 +40,13 @@
     font-weight: bold;
 
 }
+
+.user_info a{
+    color: var(--nav-text-color);
+    
+    border-radius: 3px;
+} 
+.user_info a:hover{
+    background-color: rgb(255, 149, 0);
+    font-weight: bold;
+}

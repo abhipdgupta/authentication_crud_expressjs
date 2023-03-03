@@ -8,7 +8,7 @@ const handleCreatePost = async (req, res) => {
     createdBy: req.user._id,
   });
 
-  return res.redirect("/");
+  return res.redirect("/user/profile");
 };
 const handleEditPost = async (req, res) => {
   console.log(req.body)
@@ -61,11 +61,21 @@ const getUserPosts = async (req, res, next) => {
   next();
 };
 
+const getAllPosts= async(req,res,next)=>{
 
+  const allPosts=await Post.find();
+  
+
+  req.allposts=allPosts;
+
+  next();
+
+}
 module.exports = {
   handleCreatePost,
   handleDeletePost,
   getUserPosts,
   getPostDetail,
   handleEditPost,
+  getAllPosts,
 };

@@ -4,14 +4,15 @@ const {
   handleCreatePost,
   handleDeletePost,
   getUserPosts,
+  getAllPosts,
 } = require("../controller/post");
 const { loginRestriction, authCheck } = require("../middleware/auth");
 
 const router = express.Router();
 
-router.get("/", authCheck, (req, res) => {
+router.get("/", authCheck,getAllPosts, (req, res) => {
   if (!req.user) return res.redirect("/login");
-  return res.render("home", { userDetails: req.user });
+  return res.render("home", { userDetails: req.user,allPosts:req.allposts });
 });
 
 router
