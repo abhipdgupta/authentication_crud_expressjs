@@ -4,7 +4,7 @@
     <%- include("./partials/head") %>
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/profile.css" />
-    <title>Login | Join the fun</title>
+    <title>Your Profile</title>
   </head>
   <body>
     <%- include("./partials/navbar") %>
@@ -32,7 +32,7 @@
   <script>
     const handlePostDelete = (btn) => {
       const id = btn.getAttribute("id");
-      const uri = `https://mysocialexpress.vercel.app/user/profile/post?id=${id}`;
+      const uri = `/user/profile/post?id=${id}`;
 
       const option = {
         method: "DELETE",
@@ -40,7 +40,6 @@
 
       fetch(uri, option)
         .then((result) => {
-          console.log(result);
           document.location.reload();
         })
         .catch((err) => {

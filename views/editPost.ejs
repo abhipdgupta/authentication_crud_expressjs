@@ -3,10 +3,12 @@
   <head>
     <%- include("./partials/head") %>
     <link rel="stylesheet" href="/css/signup_login.css">
+    <link rel="stylesheet" href="/css/navbar.css">
     <title>Create Post | MsgShare</title>
   </head>
 
   <body>
+    <%- include("./partials/navbar") %>
     <form class="formLS" action="/user/edit" method="post">
       <Label>Edit Post</Label>
       <label for="title">Title</label>

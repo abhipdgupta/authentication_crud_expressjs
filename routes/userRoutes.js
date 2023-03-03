@@ -14,14 +14,14 @@ const router = express.Router();
 router
   .route("/createpost")
   .get((req, res) => {
-    res.render("createPost");
+    res.render("createPost",{ userDetails: req.user});
   })
   .post(handleCreatePost);
 
 
 router.route("/edit")
 .get(getPostDetail,(req,res)=>{
-  return res.render("editPost",{post:req.post})
+  return res.render("editPost",{post:req.post,userDetails: req.user})
 })
 .post(handleEditPost)
 
