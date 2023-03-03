@@ -1,9 +1,19 @@
 const db = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
 
 db.set("strictQuery", false);
-
+const mongoUrl = process.env.DB_URL;
 const connectDB = async () => {
-  return db.connect("mongodb://127.0.0.1:27017/wazirdb"); 
+  db.connect(mongoUrl, {
+    useNewUrlParser: true,
+  })
+    .then(() => {
+      console.log("DB CONNECTED");
+    })
+    .catch((err) => {
+      console.log(`err: ${err}`);
+    });
 };
 
-module.exports=connectDB;
+module.exports = connectDB;
