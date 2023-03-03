@@ -27,7 +27,7 @@ connectDB();
 app.use("/", staticRoutes);
 app.use("/user",loginRestriction, userRoutes);
 
-const port = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`SERVER IS UP AND RUNNING ON PORT: http://localhost:${port}`);
 });
