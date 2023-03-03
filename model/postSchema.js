@@ -1,25 +1,22 @@
 const mongoose = require("mongoose");
 const postSchema = new mongoose.Schema(
-    {
-      title: {
-        type: String,
-        required: true,
-      },
-      post_msg: {
-        type: String,
-        required: true,
-        
-      },
-      createdBy: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref:"users"
-      },
-  
+  {
+    title: {
+      type: String,
+      required: true,
     },
-    { timestamps: true }
-  );
-  
-  
-  const Post = mongoose.model("post", postSchema);
+    post_msg: {
+      type: String,
+      required: true,
+    },
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users",
+    },
+  },
+  { timestamps: true }
+);
 
-  module.exports=Post
+const Post = mongoose.model("post", postSchema);
+
+module.exports = Post;
